@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dads &amp; Grads — Summer 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEBE1;
+    --ink:#1E2A28;
+    --ink-soft:#48544F;
+    --moss:#4F6B54;
+    --moss-deep:#3A4F3E;
+    --loch:#2F4858;
+    --ember:#9B5230;
+    --mist:#CBD1BE;
+    --line: rgba(30,42,40,0.18);
+    --card-bg: #F6F3EA;
+    --radius: 3px;
+    --maxw: 920px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#151E1B; --ink:#EDE8DA; --ink-soft:#B9C0B4;
+      --moss:#8AAE8F; --moss-deep:#A9C7AD; --loch:#8FB4C7; --ember:#D89A72;
+      --mist:#3B463F; --line: rgba(237,232,218,0.16); --card-bg:#1C2723;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151E1B; --ink:#EDE8DA; --ink-soft:#B9C0B4;
+    --moss:#8AAE8F; --moss-deep:#A9C7AD; --loch:#8FB4C7; --ember:#D89A72;
+    --mist:#3B463F; --line: rgba(237,232,218,0.16); --card-bg:#1C2723;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3, .display{
+    font-family:'Fraunces', ui-serif, Georgia, serif;
+    font-weight:500; color:var(--ink); margin:0; letter-spacing:-0.01em;
+  }
+  a{color:var(--loch);}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  header.topnav{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topnav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:16px 24px;
+    display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+  }
+  .brand{font-family:'Fraunces', serif; font-weight:600; font-size:1.15rem; color:var(--ink); cursor:pointer; white-space:nowrap;}
+  .brand em{font-style:italic; color:var(--moss-deep); font-weight:500;}
+  nav.links{display:flex; gap:22px;}
+  nav.links button{
+    background:none;border:none;cursor:pointer;
+    font-family:'Work Sans', sans-serif; font-size:0.92rem; color:var(--ink-soft);
+    padding:6px 0; position:relative;
+  }
+  nav.links button.active{color:var(--ink); font-weight:600;}
+  nav.links button.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-2px; height:2px; background:var(--ember);
+  }
+
+  section.view{display:none; padding:56px 0 80px;}
+  section.view.active{display:block;}
+
+  .contour{width:100%; height:34px; margin:8px 0 8px; opacity:0.55;}
+
+  .hero{display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap;}
+  .hero-text{flex:1 1 380px; min-width:280px;}
+  .hero-text h1{font-size:2.6rem; line-height:1.08; max-width:11ch;}
+  .eyebrow-plain{color:var(--moss-deep); font-family:'Fraunces', serif; font-style:italic; font-size:1.05rem; margin-bottom:6px; display:block;}
+  .hero-text p.lede{margin-top:18px; font-size:1.1rem; color:var(--ink-soft); max-width:46ch;}
+  .hero-art{flex:1 1 320px; min-width:280px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--moss-deep); color:var(--paper);
+    border:none; padding:13px 22px; border-radius:var(--radius);
+    font-family:'Work Sans',sans-serif; font-size:0.98rem; font-weight:600;
+    cursor:pointer; margin-top:26px;
+  }
+  .btn:hover{background:var(--ember);}
+  .btn.secondary{background:transparent; color:var(--ink); border:1.5px solid var(--line);}
+  .btn.secondary:hover{border-color:var(--ink);}
+
+  .crew{display:flex; gap:40px; margin-top:10px; flex-wrap:wrap;}
+  .crew-col{flex:1 1 260px;}
+  .crew-count{font-family:'Fraunces', serif; font-size:2.6rem; color:var(--moss-deep); line-height:1;}
+  .crew-label{color:var(--ink-soft); font-size:0.95rem; margin-top:4px;}
+
+  .deciding-list{display:grid; grid-template-columns:1fr 1fr; gap:22px 32px; margin-top:20px;}
+  .deciding-item{border-left:2px solid var(--mist); padding-left:16px;}
+  .deciding-item h3{font-size:1.05rem; font-weight:600; font-family:'Work Sans',sans-serif; margin-bottom:4px;}
+  .deciding-item p{color:var(--ink-soft); font-size:0.94rem; margin:0;}
+
+  .roadmap-note{
+    background:var(--card-bg); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 24px; margin-top:14px; font-size:0.95rem; color:var(--ink-soft);
+  }
+
+  h2.section-title{font-size:1.6rem; margin-bottom:6px;}
+  .section-sub{color:var(--ink-soft); font-size:0.98rem; max-width:56ch; margin-bottom:8px;}
+
+  .survey-shell{max-width:640px; margin:0 auto;}
+  fieldset{border:none; margin:0 0 34px; padding:0;}
+  legend{font-family:'Fraunces', serif; font-size:1.1rem; font-weight:500; color:var(--moss-deep); margin-bottom:14px; padding:0;}
+  .field{margin-bottom:20px;}
+  .field label.qlabel{display:block; font-weight:600; font-size:0.96rem; margin-bottom:8px;}
+  input[type=text], input[type=email], textarea{
+    width:100%; font-family:'Work Sans',sans-serif; font-size:0.96rem;
+    background:var(--card-bg); border:1px solid var(--line); border-radius:var(--radius);
+    padding:11px 13px; color:var(--ink);
+  }
+  textarea{min-height:70px; resize:vertical;}
+  input:focus, textarea:focus, button:focus-visible{outline:2px solid var(--loch); outline-offset:1px;}
+  .choice-grid{display:flex; flex-wrap:wrap; gap:10px;}
+  .choice{
+    border:1px solid var(--line); border-radius:20px; padding:9px 16px;
+    font-size:0.9rem; cursor:pointer; background:var(--card-bg); color:var(--ink); user-select:none;
+  }
+  .choice input{position:absolute; opacity:0; pointer-events:none;}
+  .choice.picked{background:var(--moss-deep); border-color:var(--moss-deep); color:var(--paper);}
+
+  .submit-row{display:flex; align-items:center; gap:14px; margin-top:10px; flex-wrap:wrap;}
+  #survey-msg{font-size:0.9rem; color:var(--ink-soft);}
+
+  .fallback-card{
+    display:none; background:var(--card-bg); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; margin-top:22px;
+  }
+  .fallback-card.show{display:block;}
+  .fallback-card h3{font-size:1.05rem; margin-bottom:8px;}
+  .fallback-card pre{
+    white-space:pre-wrap; font-family:'Work Sans',sans-serif; font-size:0.88rem;
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:14px; color:var(--ink-soft); max-height:220px; overflow:auto;
+  }
+  .fallback-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
+  .fallback-actions .btn{margin-top:0; padding:10px 16px; font-size:0.88rem;}
+
+  .stat-row{display:flex; gap:28px; margin-bottom:36px; flex-wrap:wrap;}
+  .stat{flex:1 1 140px;}
+  .stat .num{font-family:'Fraunces',serif; font-size:2.2rem; color:var(--moss-deep);}
+  .stat .lbl{color:var(--ink-soft); font-size:0.85rem;}
+
+  .qblock{margin-bottom:34px;}
+  .qblock h3{font-size:1.02rem; font-weight:600; font-family:'Work Sans',sans-serif; margin-bottom:12px;}
+  .bar-row{display:grid; grid-template-columns:150px 1fr 40px; align-items:center; gap:10px; margin-bottom:8px; font-size:0.88rem;}
+  .bar-track{background:var(--mist); border-radius:4px; height:14px; overflow:hidden;}
+  .bar-fill{height:100%; background:var(--moss-deep); border-radius:4px 0 0 4px;}
+  .bar-count{color:var(--ink-soft); text-align:right;}
+
+  .notes-list{display:flex; flex-direction:column; gap:14px;}
+  .note-card{background:var(--card-bg); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; font-size:0.92rem;}
+  .note-card .who{font-weight:600; font-size:0.85rem; color:var(--moss-deep); margin-bottom:4px;}
+  .empty-state{border:1px dashed var(--line); border-radius:var(--radius); padding:34px 22px; text-align:center; color:var(--ink-soft);}
+
+  footer{border-top:1px solid var(--line); padding:26px 0; margin-top:20px;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-size:0.82rem; color:var(--ink-soft);}
+
+  @media (max-width:640px){
+    .hero-text h1{font-size:2.05rem; max-width:14ch;}
+    .deciding-list{grid-template-columns:1fr;}
+    .bar-row{grid-template-columns:110px 1fr 34px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="topnav-inner">
+    <div class="brand" onclick="go('home')">Dads &amp; Grads</div>
+    <nav class="links">
+      <button data-view="home" onclick="go('home')">Home</button>
+      <button data-view="survey" onclick="go('survey')">Survey</button>
+      <button data-view="results" onclick="go('results')">Results</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HOME -->
+  <section class="view active" id="view-home">
+    <div class="hero">
+      <div class="hero-text">
+        <span class="eyebrow-plain">Seven dads. Seven grads. One trip.</span>
+        <h1>The last big trip before college.</h1>
+        <p class="lede">Fourteen of us are heading to Ireland or Scotland in summer 2027 — dads and their graduating seniors, one send-off before everyone scatters. Nothing's locked in yet. This site is where we figure it out together, starting with a short survey.</p>
+        <button class="btn" onclick="go('survey')">Take the survey →</button>
+        <button class="btn secondary" onclick="go('results')">See what people said</button>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 360 300" width="100%" style="max-width:360px;">
+          <circle cx="60" cy="230" r="5" fill="var(--ember)"></circle>
+          <text x="72" y="234" font-family="Work Sans" font-size="12" fill="var(--ink-soft)">home</text>
+          <path d="M60,225 C110,170 120,120 180,90" fill="none" stroke="var(--moss)" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round"></path>
+          <path d="M60,225 C90,190 90,150 120,110" fill="none" stroke="var(--loch)" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round"></path>
+          <circle cx="180" cy="90" r="4.5" fill="var(--moss-deep)"></circle>
+          <text x="190" y="84" font-family="Fraunces" font-style="italic" font-size="13" fill="var(--moss-deep)">Skye</text>
+          <path d="M180,90 C210,70 230,60 255,40" fill="none" stroke="var(--moss)" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round"></path>
+          <circle cx="255" cy="40" r="4.5" fill="var(--moss-deep)"></circle>
+          <text x="230" y="30" font-family="Fraunces" font-style="italic" font-size="13" fill="var(--moss-deep)">Cairngorms</text>
+          <circle cx="120" cy="110" r="4.5" fill="var(--loch)"></circle>
+          <text x="128" y="105" font-family="Fraunces" font-style="italic" font-size="13" fill="var(--loch)">Cliffs of Moher</text>
+          <path d="M120,110 C140,140 150,160 170,190" fill="none" stroke="var(--loch)" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round"></path>
+          <circle cx="170" cy="190" r="4.5" fill="var(--loch)"></circle>
+          <text x="178" y="195" font-family="Fraunces" font-style="italic" font-size="13" fill="var(--loch)">Dingle</text>
+          <text x="20" y="20" font-family="Work Sans" font-size="11" fill="var(--ink-soft)">two routes, one decision</text>
+          <text x="20" y="285" font-family="Work Sans" font-size="10" letter-spacing="0.5" fill="var(--ember)">map under construction — routes TBD</text>
+        </svg>
+      </div>
+    </div>
+
+    <svg class="contour" viewBox="0 0 800 34" preserveAspectRatio="none"><path d="M0,17 C100,2 150,32 250,17 C350,2 400,32 500,17 C600,2 650,32 750,17 L800,17" fill="none" stroke="var(--line)" stroke-width="1.5"/></svg>
+
+    <div class="crew">
+      <div class="crew-col"><div class="crew-count">7</div><div class="crew-label">dads, along for the ride</div></div>
+      <div class="crew-col"><div class="crew-count">7</div><div class="crew-label">graduating seniors, off to college soon</div></div>
+      <div class="crew-col" style="flex:2 1 320px;">
+        <p style="color:var(--ink-soft); font-size:0.96rem; margin-top:6px;">Everyone gets a say. Answers are tied to your name so we can see who's weighed in, and results update here as they come in.</p>
+      </div>
+    </div>
+
+    <svg class="contour" viewBox="0 0 800 34" preserveAspectRatio="none"><path d="M0,17 C100,2 150,32 250,17 C350,2 400,32 500,17 C600,2 650,32 750,17 L800,17" fill="none" stroke="var(--line)" stroke-width="1.5"/></svg>
+
+    <h2 class="section-title">What we're deciding</h2>
+    <p class="section-sub">Ireland and Scotland are both still on the table. These are the calls the survey is meant to help us make.</p>
+    <div class="deciding-list">
+      <div class="deciding-item"><h3>Ireland or Scotland</h3><p>Coastlines, castles and pubs either way — but the routes, drives and flights differ a lot.</p></div>
+      <div class="deciding-item"><h3>When in summer 2027</h3><p>Depends on graduations, jobs, and how long people can actually get away.</p></div>
+      <div class="deciding-item"><h3>Pace and budget</h3><p>Packed itinerary vs. slower trip, and what everyone's comfortable spending per person.</p></div>
+      <div class="deciding-item"><h3>What we actually do</h3><p>Hikes, distilleries, golf, castles, a match, the pub — everyone picks what they're into.</p></div>
+    </div>
+
+    <div class="roadmap-note">
+      <strong>This site will keep growing.</strong> Once the survey settles the big questions, this is also where we'll post the itinerary, lodging, packing lists, and a shared kitty for expenses.
+    </div>
+  </section>
+
+  <!-- SURVEY -->
+  <section class="view" id="view-survey">
+    <div class="survey-shell">
+      <h2 class="section-title">Trip survey</h2>
+      <p class="section-sub">Takes about three minutes. Answer for yourself — there's no wrong answer, we just need everyone's actual preference.</p>
+
+      <form id="survey-form">
+        <fieldset>
+          <legend>Who's answering</legend>
+          <div class="field">
+            <label class="qlabel" for="f-name">Full name</label>
+            <input type="text" id="f-name" required placeholder="e.g. Mike Sullivan">
+          </div>
+          <div class="field">
+            <label class="qlabel">You are a…</label>
+            <div class="choice-grid" data-group="role">
+              <label class="choice"><input type="radio" name="role" value="Dad"> Dad</label>
+              <label class="choice"><input type="radio" name="role" value="Senior"> Graduating senior</label>
+            </div>
+          </div>
+          <div class="field">
+            <label class="qlabel" for="f-school">What high school do you (or your child) attend?</label>
+            <input type="text" id="f-school" placeholder="School name">
+          </div>
+          <div class="field">
+            <label class="qlabel" for="f-graddate">Graduation date</label>
+            <input type="date" id="f-graddate">
+            <p class="hint">Best guess is fine if it's not official yet.</p>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>The big call</legend>
+          <div class="field">
+            <label class="qlabel">Ireland or Scotland?</label>
+            <div class="choice-grid" data-group="destination">
+              <label class="choice"><input type="radio" name="destination" value="Ireland"> Ireland</label>
+              <label class="choice"><input type="radio" name="destination" value="Scotland"> Scotland</label>
+              <label class="choice"><input type="radio" name="destination" value="No preference"> Genuinely no preference</label>
+            </div>
+          </div>
+          <div class="field">
+            <label class="qlabel">Trip length</label>
+            <div class="choice-grid" data-group="length">
+              <label class="choice"><input type="radio" name="length" value="2-3 days"> 2–3 days</label>
+              <label class="choice"><input type="radio" name="length" value="4-5 days"> 4–5 days</label>
+              <label class="choice"><input type="radio" name="length" value="6-7 days"> 6–7 days</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>When and how much</legend>
+          <div class="field">
+            <label class="qlabel">Which weeks of June or July 2027 could work? (pick all that apply)</label>
+            <div class="choice-grid" data-group="window" data-multi="true">
+              <label class="choice"><input type="checkbox" name="window" value="Week of May 31"> Week of May 31</label>
+              <label class="choice"><input type="checkbox" name="window" value="Week of Jun 7"> Week of Jun 7</label>
+              <label class="choice"><input type="checkbox" name="window" value="Week of Jun 14"> Week of Jun 14</label>
+              <label class="choice"><input type="checkbox" name="window" value="Week of Jun 21"> Week of Jun 21</label>
+              <label class="choice"><input type="checkbox" name="window" value="Week of Jun 28"> Week of Jun 28</label>
+              <label class="choice"><input type="checkbox" name="window" value="Week of Jul 5"> Week of Jul 5</label>
+              <label class="choice"><input type="checkbox" name="window" value="Week of Jul 12"> Week of Jul 12</label>
+              <label class="choice"><input type="checkbox" name="window" value="Week of Jul 19"> Week of Jul 19</label>
+              <label class="choice"><input type="checkbox" name="window" value="Week of Jul 26"> Week of Jul 26</label>
+            </div>
+            <p class="hint">Each "week of" runs Monday through the following Sunday.</p>
+          </div>
+          <div class="field">
+            <label class="qlabel">Comfortable budget per person (flights not included)</label>
+            <div class="choice-grid" data-group="budget">
+              <label class="choice"><input type="radio" name="budget" value="Under $2,500"> Under $2,500</label>
+              <label class="choice"><input type="radio" name="budget" value="$2,500-$4,000"> $2,500–$4,000</label>
+              <label class="choice"><input type="radio" name="budget" value="$4,000-$6,000"> $4,000–$6,000</label>
+              <label class="choice"><input type="radio" name="budget" value="Not a limiting factor"> Not a limiting factor</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>How we spend the days</legend>
+          <div class="field">
+            <label class="qlabel">Pace</label>
+            <div class="choice-grid" data-group="pace">
+              <label class="choice"><input type="radio" name="pace" value="Packed"> Packed — see everything</label>
+              <label class="choice"><input type="radio" name="pace" value="Balanced"> Balanced mix</label>
+              <label class="choice"><input type="radio" name="pace" value="Relaxed"> Relaxed — fewer stops</label>
+            </div>
+          </div>
+          <div class="field">
+            <label class="qlabel">What are you most into? (pick all that apply)</label>
+            <div class="choice-grid" data-group="activities" data-multi="true">
+              <label class="choice"><input type="checkbox" name="activities" value="Hiking & outdoors"> Hiking & outdoors</label>
+              <label class="choice"><input type="checkbox" name="activities" value="Castles & history"> Castles & history</label>
+              <label class="choice"><input type="checkbox" name="activities" value="Golf"> Golf</label>
+              <label class="choice"><input type="checkbox" name="activities" value="Distillery/brewery tours"> Distillery / brewery tours</label>
+              <label class="choice"><input type="checkbox" name="activities" value="Cities & nightlife"> Cities & nightlife</label>
+              <label class="choice"><input type="checkbox" name="activities" value="Fishing"> Fishing</label>
+              <label class="choice"><input type="checkbox" name="activities" value="Scenic drives"> Scenic drives</label>
+              <label class="choice"><input type="checkbox" name="activities" value="A live match"> A live match</label>
+              <label class="choice"><input type="checkbox" name="activities" value="Beaches & coast"> Beaches & coast</label>
+              <label class="choice"><input type="checkbox" name="activities" value="Food & pubs"> Food & pubs</label>
+            </div>
+          </div>
+          <div class="field">
+            <label class="qlabel">Where to sleep</label>
+            <div class="choice-grid" data-group="lodging">
+              <label class="choice"><input type="radio" name="lodging" value="Hotels"> Hotels</label>
+              <label class="choice"><input type="radio" name="lodging" value="B&Bs / guesthouses"> B&amp;Bs / guesthouses</label>
+              <label class="choice"><input type="radio" name="lodging" value="One big rental house"> One big rental house or castle</label>
+              <label class="choice"><input type="radio" name="lodging" value="Mix"> Mix of everything</label>
+            </div>
+          </div>
+          <div class="field">
+            <label class="qlabel">On average, how many rounds of golf per day would you want?</label>
+            <div class="choice-grid" data-group="golf">
+              <label class="choice"><input type="radio" name="golf" value="0"> 0 — not golfing</label>
+              <label class="choice"><input type="radio" name="golf" value="1"> 1 round</label>
+              <label class="choice"><input type="radio" name="golf" value="2"> 2 rounds</label>
+              <label class="choice"><input type="radio" name="golf" value="More than 2"> More than 2</label>
+            </div>
+          </div>
+          <div class="field">
+            <label class="qlabel">Okay hiring a local guide for a day or two, if it means a more expensive trip?</label>
+            <div class="choice-grid" data-group="guide">
+              <label class="choice"><input type="radio" name="guide" value="Yes"> Yes</label>
+              <label class="choice"><input type="radio" name="guide" value="No"> No</label>
+              <label class="choice"><input type="radio" name="guide" value="Depends on cost"> Depends on the cost</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>The final nights</legend>
+          <div class="field">
+            <label class="qlabel">Interested in the moms joining for the final couple of nights (Edinburgh, Dublin, or London)?</label>
+            <div class="choice-grid" data-group="moms">
+              <label class="choice"><input type="radio" name="moms" value="Yes"> Yes</label>
+              <label class="choice"><input type="radio" name="moms" value="No"> No</label>
+              <label class="choice"><input type="radio" name="moms" value="Maybe"> Maybe / not sure</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Anything else</legend>
+          <div class="field">
+            <label class="qlabel" for="f-dietary">Dietary restrictions or allergies</label>
+            <input type="text" id="f-dietary" placeholder="Leave blank if none">
+          </div>
+          <div class="field">
+            <label class="qlabel" for="f-bucket">One thing you'd love to do or see</label>
+            <textarea id="f-bucket" placeholder="A specific place, a round of golf, a distillery — anything"></textarea>
+          </div>
+          <div class="field">
+            <label class="qlabel" for="f-notes">Anything else on your mind</label>
+            <textarea id="f-notes" placeholder="Concerns, must-dos, scheduling constraints, etc."></textarea>
+          </div>
+        </fieldset>
+
+        <div class="submit-row">
+          <button type="submit" class="btn" id="submit-btn">Submit answers</button>
+          <span id="survey-msg"></span>
+        </div>
+      </form>
+
+      <div class="fallback-card" id="fallback-card">
+        <h3>Couldn't save automatically</h3>
+        <p style="color:var(--ink-soft); font-size:0.92rem; margin-top:0;">That's usually a connection hiccup. You can try again, or send your answers to whoever's collecting responses in the meantime.</p>
+        <pre id="fallback-text"></pre>
+        <div class="fallback-actions">
+          <button class="btn secondary" id="copy-btn" type="button">Copy answers</button>
+          <a class="btn secondary" id="email-btn" href="#" style="text-decoration:none;">Email answers</a>
+          <a class="btn secondary" id="text-btn" href="#" style="text-decoration:none;">Text answers</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="view" id="view-results">
+    <h2 class="section-title">What people are saying</h2>
+    <p class="section-sub" id="results-sub">Updates live as answers come in.</p>
+    <div id="results-body"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Dads & Grads — Summer 2027</span>
+    <span>Ireland or Scotland. Still deciding, together.</span>
+  </div>
+</footer>
+
+<!--
+  ============================================================
+  FIREBASE SETUP — replace the config below with your own.
+  See README.md in this project for step-by-step instructions.
+  ============================================================
+-->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+  import {
+    getFirestore, collection, addDoc, onSnapshot
+  } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+  // ---- PASTE YOUR FIREBASE CONFIG HERE ----
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+  // ------------------------------------------
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const responsesCol = collection(db, "responses");
+
+  const QUESTION_META = {
+    destination: {label:"Destination", options:["Ireland","Scotland","No preference"]},
+    length: {label:"Trip length", options:["2-3 days","4-5 days","6-7 days"]},
+    window: {label:"Weeks of June/July that work", options:["Week of May 31","Week of Jun 7","Week of Jun 14","Week of Jun 21","Week of Jun 28","Week of Jul 5","Week of Jul 12","Week of Jul 19","Week of Jul 26"], multi:true},
+    budget: {label:"Budget per person", options:["Under $2,500","$2,500-$4,000","$4,000-$6,000","Not a limiting factor"]},
+    pace: {label:"Pace", options:["Packed","Balanced","Relaxed"]},
+    activities: {label:"Activities", options:["Hiking & outdoors","Castles & history","Golf","Distillery/brewery tours","Cities & nightlife","Fishing","Scenic drives","A live match","Beaches & coast","Food & pubs"], multi:true},
+    lodging: {label:"Where to sleep", options:["Hotels","B&Bs / guesthouses","One big rental house","Mix"]},
+    golf: {label:"Rounds of golf per day", options:["0","1","2","More than 2"]},
+    guide: {label:"Okay with a paid guide if it's pricier", options:["Yes","No","Depends on cost"]},
+    moms: {label:"Moms join for the final nights?", options:["Yes","No","Maybe"]}
+  };
+
+  let responses = [];
+
+  function go(view){
+    document.querySelectorAll('section.view').forEach(s=>s.classList.remove('active'));
+    document.getElementById('view-'+view).classList.add('active');
+    document.querySelectorAll('nav.links button').forEach(b=>b.classList.toggle('active', b.dataset.view===view));
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+  window.go = go;
+
+  document.querySelectorAll('.choice-grid').forEach(grid=>{
+    grid.addEventListener('click', (e)=>{
+      const label = e.target.closest('label.choice');
+      if(!label) return;
+      const input = label.querySelector('input');
+      if(input.type === 'radio'){
+        grid.querySelectorAll('.choice').forEach(c=>c.classList.remove('picked'));
+      }
+      setTimeout(()=>{ label.classList.toggle('picked', input.checked); }, 0);
+    });
+  });
+
+  function escapeHtml(str){
+    return (str || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function collectAnswers(){
+    const name = document.getElementById('f-name').value.trim();
+    const get = (n)=> document.querySelector(`input[name="${n}"]:checked`)?.value || '';
+    const getMulti = (n)=> Array.from(document.querySelectorAll(`input[name="${n}"]:checked`)).map(i=>i.value);
+    return {
+      name: name,
+      role: get('role') || 'Unspecified',
+      school: document.getElementById('f-school').value.trim(),
+      gradDate: document.getElementById('f-graddate').value,
+      destination: get('destination'),
+      length: get('length'),
+      window: getMulti('window'),
+      budget: get('budget'),
+      pace: get('pace'),
+      activities: getMulti('activities'),
+      lodging: get('lodging'),
+      golf: get('golf'),
+      guide: get('guide'),
+      moms: get('moms'),
+      dietary: document.getElementById('f-dietary').value.trim(),
+      bucket: document.getElementById('f-bucket').value.trim(),
+      notes: document.getElementById('f-notes').value.trim(),
+      submittedAt: new Date().toISOString()
+    };
+  }
+
+  function formatAnswers(a){
+    return [
+      `Dads & Grads 2027 survey — ${a.name} (${a.role})`, ``,
+      `High school: ${a.school || '—'}`,
+      `Graduation date: ${a.gradDate || '—'}`,
+      `Destination: ${a.destination || '—'}`,
+      `Trip length: ${a.length || '—'}`,
+      `Weeks that work: ${(a.window||[]).join(', ') || '—'}`,
+      `Budget/person: ${a.budget || '—'}`,
+      `Pace: ${a.pace || '—'}`,
+      `Activities: ${(a.activities||[]).join(', ') || '—'}`,
+      `Lodging: ${a.lodging || '—'}`,
+      `Golf rounds/day: ${a.golf || '—'}`,
+      `Okay with a guide if pricier: ${a.guide || '—'}`,
+      `Moms join final nights: ${a.moms || '—'}`,
+      `Dietary: ${a.dietary || 'none'}`,
+      `Bucket list item: ${a.bucket || '—'}`,
+      `Notes: ${a.notes || '—'}`
+    ].join('\n');
+  }
+
+  document.getElementById('survey-form').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const msg = document.getElementById('survey-msg');
+    const answers = collectAnswers();
+
+    if(!answers.name){
+      msg.textContent = "Enter your name before submitting.";
+      return;
+    }
+    if(!document.querySelector('input[name="role"]:checked')){
+      msg.textContent = "Pick Dad or Senior before submitting.";
+      return;
+    }
+
+    btn.disabled = true;
+    msg.textContent = "Saving…";
+
+    try{
+      await addDoc(responsesCol, answers);
+      msg.textContent = "Saved — thanks! Check the Results tab.";
+      document.getElementById('survey-form').reset();
+      document.querySelectorAll('.choice').forEach(c=>c.classList.remove('picked'));
+      document.getElementById('fallback-card').classList.remove('show');
+    }catch(err){
+      msg.textContent = "";
+      const text = formatAnswers(answers);
+      document.getElementById('fallback-text').textContent = text;
+      document.getElementById('fallback-card').classList.add('show');
+      document.getElementById('email-btn').href = `mailto:?subject=${encodeURIComponent('Dads & Grads 2027 survey — '+answers.name)}&body=${encodeURIComponent(text)}`;
+      document.getElementById('text-btn').href = `sms:?body=${encodeURIComponent(text)}`;
+      document.getElementById('fallback-card').scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    btn.disabled = false;
+  });
+
+  document.getElementById('copy-btn').addEventListener('click', async ()=>{
+    const text = document.getElementById('fallback-text').textContent;
+    try{
+      await navigator.clipboard.writeText(text);
+      const b = document.getElementById('copy-btn');
+      const old = b.textContent; b.textContent = 'Copied!';
+      setTimeout(()=>{ b.textContent = old; }, 1500);
+    }catch(e){}
+  });
+
+  function tally(field, meta){
+    const counts = {};
+    meta.options.forEach(o=>counts[o]=0);
+    responses.forEach(r=>{
+      const v = r[field];
+      if(meta.multi){ (v||[]).forEach(x=>{ if(counts[x]!==undefined) counts[x]++; }); }
+      else if(v && counts[v]!==undefined){ counts[v]++; }
+    });
+    return counts;
+  }
+
+  function renderResults(){
+    const body = document.getElementById('results-body');
+    const sub = document.getElementById('results-sub');
+
+    if(responses.length === 0){
+      sub.textContent = "No answers yet.";
+      body.innerHTML = `<div class="empty-state">Nobody's answered yet — be the first from the Survey tab.</div>`;
+      return;
+    }
+
+    sub.textContent = `${responses.length} of 14 have answered so far.`;
+    const dadCount = responses.filter(r=>r.role==='Dad').length;
+    const seniorCount = responses.filter(r=>r.role==='Senior').length;
+
+    let html = `<div class="stat-row">
+      <div class="stat"><div class="num">${responses.length}</div><div class="lbl">total responses</div></div>
+      <div class="stat"><div class="num">${dadCount}</div><div class="lbl">dads answered</div></div>
+      <div class="stat"><div class="num">${seniorCount}</div><div class="lbl">seniors answered</div></div>
+    </div>`;
+
+    Object.entries(QUESTION_META).forEach(([field, meta])=>{
+      const counts = tally(field, meta);
+      const max = Math.max(1, ...Object.values(counts));
+      html += `<div class="qblock"><h3>${meta.label}</h3>`;
+      meta.options.forEach(opt=>{
+        const c = counts[opt] || 0;
+        const pct = Math.round((c/max)*100);
+        html += `<div class="bar-row">
+          <span>${escapeHtml(opt)}</span>
+          <div class="bar-track"><div class="bar-fill" style="width:${pct}%;"></div></div>
+          <span class="bar-count">${c}</span>
+        </div>`;
+      });
+      html += `</div>`;
+    });
+
+    const rosterEntries = responses.filter(r=>r.school || r.gradDate);
+    if(rosterEntries.length){
+      html += `<div class="qblock"><h3>Who's coming — schools & grad dates</h3><div class="notes-list">`;
+      rosterEntries.forEach(r=>{
+        const bits = [];
+        if(r.school) bits.push(escapeHtml(r.school));
+        if(r.gradDate) bits.push(`grad ${escapeHtml(r.gradDate)}`);
+        html += `<div class="note-card"><div class="who">${escapeHtml(r.name)} · ${escapeHtml(r.role)}</div>${bits.join(' — ')}</div>`;
+      });
+      html += `</div></div>`;
+    }
+
+    const notesEntries = responses.filter(r=>r.bucket || r.notes || r.dietary);
+    if(notesEntries.length){
+      html += `<div class="qblock"><h3>In their own words</h3><div class="notes-list">`;
+      notesEntries.forEach(r=>{
+        let bits = [];
+        if(r.bucket) bits.push(`Wants to: ${escapeHtml(r.bucket)}`);
+        if(r.notes) bits.push(escapeHtml(r.notes));
+        if(r.dietary) bits.push(`Dietary: ${escapeHtml(r.dietary)}`);
+        if(bits.length){
+          html += `<div class="note-card"><div class="who">${escapeHtml(r.name)} · ${escapeHtml(r.role)}</div>${bits.join('<br>')}</div>`;
+        }
+      });
+      html += `</div></div>`;
+    }
+
+    body.innerHTML = html;
+  }
+
+  onSnapshot(responsesCol, (snap)=>{
+    responses = snap.docs.map(d=>d.data());
+    renderResults();
+  }, (err)=>{
+    document.getElementById('results-body').innerHTML =
+      `<div class="empty-state">Couldn't load results (${escapeHtml(err.message)}). Check your Firebase config and Firestore rules.</div>`;
+  });
+</script>
+</body>
+</html>
