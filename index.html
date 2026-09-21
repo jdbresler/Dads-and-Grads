@@ -197,7 +197,7 @@
       <div class="hero-text">
         <span class="eyebrow-plain">Seven dads. Seven grads. One trip.</span>
         <h1>The last big trip before college.</h1>
-        <p class="lede">Fourteen of us are heading to Ireland or Scotland in summer 2027 — dads and their graduating seniors, one send-off before everyone scatters. Nothing's locked in yet. This site is where we figure it out together, starting with a short survey.</p>
+        <p class="lede">Gauging interest in a trip for up to fourteen of us heading to Ireland or Scotland in summer 2027 — dads and their graduating seniors, one send-off before everyone scatters. Nothing's locked in yet and there is zero pressure to participate. This site is where we figure it out together, starting with a short survey.</p>
         <button class="btn" onclick="go('survey')">Take the survey →</button>
         <button class="btn secondary" onclick="go('results')">See what people said</button>
       </div>
@@ -228,9 +228,6 @@
     <div class="crew">
       <div class="crew-col"><div class="crew-count">7</div><div class="crew-label">dads, along for the ride</div></div>
       <div class="crew-col"><div class="crew-count">7</div><div class="crew-label">graduating seniors, off to college soon</div></div>
-      <div class="crew-col" style="flex:2 1 320px;">
-        <p style="color:var(--ink-soft); font-size:0.96rem; margin-top:6px;">Everyone gets a say. Answers are tied to your name so we can see who's weighed in, and results update here as they come in.</p>
-      </div>
     </div>
 
     <svg class="contour" viewBox="0 0 800 34" preserveAspectRatio="none"><path d="M0,17 C100,2 150,32 250,17 C350,2 400,32 500,17 C600,2 650,32 750,17 L800,17" fill="none" stroke="var(--line)" stroke-width="1.5"/></svg>
@@ -263,18 +260,11 @@
             <input type="text" id="f-name" required placeholder="e.g. Mike Sullivan">
           </div>
           <div class="field">
-            <label class="qlabel">You are a…</label>
-            <div class="choice-grid" data-group="role">
-              <label class="choice"><input type="radio" name="role" value="Dad"> Dad</label>
-              <label class="choice"><input type="radio" name="role" value="Senior"> Graduating senior</label>
-            </div>
-          </div>
-          <div class="field">
-            <label class="qlabel" for="f-school">What high school do you (or your child) attend?</label>
+            <label class="qlabel" for="f-school">What high school does your child attend?</label>
             <input type="text" id="f-school" placeholder="School name">
           </div>
           <div class="field">
-            <label class="qlabel" for="f-graddate">Graduation date</label>
+            <label class="qlabel" for="f-graddate">Your child's graduation date</label>
             <input type="date" id="f-graddate">
             <p class="hint">Best guess is fine if it's not official yet.</p>
           </div>
@@ -314,16 +304,18 @@
               <label class="choice"><input type="checkbox" name="window" value="Week of Jul 12"> Week of Jul 12</label>
               <label class="choice"><input type="checkbox" name="window" value="Week of Jul 19"> Week of Jul 19</label>
               <label class="choice"><input type="checkbox" name="window" value="Week of Jul 26"> Week of Jul 26</label>
+              <label class="choice"><input type="checkbox" name="window" value="Week of Aug 2"> Week of Aug 2</label>
             </div>
             <p class="hint">Each "week of" runs Monday through the following Sunday.</p>
           </div>
           <div class="field">
-            <label class="qlabel">Comfortable budget per person (flights not included)</label>
+            <label class="qlabel">Comfortable spending, per person, per day (lodging, food, activities — flights not included)</label>
+            <p class="hint" style="margin-top:0; margin-bottom:10px;">We'll try to keep costs down where we can — a shared house rental we can all pile into is the leading idea for lodging. This is a sensitive topic for some, so no judgment either way; we just want a rough sense of where the group sits.</p>
             <div class="choice-grid" data-group="budget">
-              <label class="choice"><input type="radio" name="budget" value="Under $2,500"> Under $2,500</label>
-              <label class="choice"><input type="radio" name="budget" value="$2,500-$4,000"> $2,500–$4,000</label>
-              <label class="choice"><input type="radio" name="budget" value="$4,000-$6,000"> $4,000–$6,000</label>
-              <label class="choice"><input type="radio" name="budget" value="Not a limiting factor"> Not a limiting factor</label>
+              <label class="choice"><input type="radio" name="budget" value="Budget/value (~$500-750/day)"> Budget/value (~$500–750/day)</label>
+              <label class="choice"><input type="radio" name="budget" value="Mid-tier ($750-1250/day)"> Mid-tier ($750–1,250/day)</label>
+              <label class="choice"><input type="radio" name="budget" value="Premium ($1250+/day)"> Premium ($1,250+/day)</label>
+              <label class="choice"><input type="radio" name="budget" value="Flexible"> Flexible</label>
             </div>
           </div>
         </fieldset>
@@ -348,7 +340,7 @@
               <label class="choice"><input type="checkbox" name="activities" value="Cities & nightlife"> Cities & nightlife</label>
               <label class="choice"><input type="checkbox" name="activities" value="Fishing"> Fishing</label>
               <label class="choice"><input type="checkbox" name="activities" value="Scenic drives"> Scenic drives</label>
-              <label class="choice"><input type="checkbox" name="activities" value="A live match"> A live match</label>
+              <label class="choice"><input type="checkbox" name="activities" value="A live match"> A major rugby or soccer match</label>
               <label class="choice"><input type="checkbox" name="activities" value="Beaches & coast"> Beaches & coast</label>
               <label class="choice"><input type="checkbox" name="activities" value="Food & pubs"> Food & pubs</label>
             </div>
@@ -372,11 +364,11 @@
             </div>
           </div>
           <div class="field">
-            <label class="qlabel">Okay hiring a local guide for a day or two, if it means a more expensive trip?</label>
-            <div class="choice-grid" data-group="guide">
-              <label class="choice"><input type="radio" name="guide" value="Yes"> Yes</label>
-              <label class="choice"><input type="radio" name="guide" value="No"> No</label>
-              <label class="choice"><input type="radio" name="guide" value="Depends on cost"> Depends on the cost</label>
+            <label class="qlabel">Okay hiring a travel agent to put the trip together (golf, lodging, transport), knowing that adds to the cost?</label>
+            <div class="choice-grid" data-group="agent">
+              <label class="choice"><input type="radio" name="agent" value="Yes"> Yes</label>
+              <label class="choice"><input type="radio" name="agent" value="No"> No</label>
+              <label class="choice"><input type="radio" name="agent" value="Depends on cost"> Depends on the cost</label>
             </div>
           </div>
         </fieldset>
@@ -395,10 +387,6 @@
 
         <fieldset>
           <legend>Anything else</legend>
-          <div class="field">
-            <label class="qlabel" for="f-dietary">Dietary restrictions or allergies</label>
-            <input type="text" id="f-dietary" placeholder="Leave blank if none">
-          </div>
           <div class="field">
             <label class="qlabel" for="f-bucket">One thing you'd love to do or see</label>
             <textarea id="f-bucket" placeholder="A specific place, a round of golf, a distillery — anything"></textarea>
@@ -474,13 +462,13 @@
   const QUESTION_META = {
     destination: {label:"Destination", options:["Ireland","Scotland","No preference"]},
     length: {label:"Trip length", options:["2-3 days","4-5 days","6-7 days"]},
-    window: {label:"Weeks of June/July that work", options:["Week of May 31","Week of Jun 7","Week of Jun 14","Week of Jun 21","Week of Jun 28","Week of Jul 5","Week of Jul 12","Week of Jul 19","Week of Jul 26"], multi:true},
-    budget: {label:"Budget per person", options:["Under $2,500","$2,500-$4,000","$4,000-$6,000","Not a limiting factor"]},
+    window: {label:"Weeks of June/July that work", options:["Week of May 31","Week of Jun 7","Week of Jun 14","Week of Jun 21","Week of Jun 28","Week of Jul 5","Week of Jul 12","Week of Jul 19","Week of Jul 26","Week of Aug 2"], multi:true},
+    budget: {label:"Budget per person per day", options:["Budget/value (~$500-750/day)","Mid-tier ($750-1250/day)","Premium ($1250+/day)","Flexible"]},
     pace: {label:"Pace", options:["Packed","Balanced","Relaxed"]},
     activities: {label:"Activities", options:["Hiking & outdoors","Castles & history","Golf","Distillery/brewery tours","Cities & nightlife","Fishing","Scenic drives","A live match","Beaches & coast","Food & pubs"], multi:true},
     lodging: {label:"Where to sleep", options:["Hotels","B&Bs / guesthouses","One big rental house","Mix"]},
     golf: {label:"Rounds of golf per day", options:["0","1","2","More than 2"]},
-    guide: {label:"Okay with a paid guide if it's pricier", options:["Yes","No","Depends on cost"]},
+    agent: {label:"Okay hiring a travel agent, knowing it adds cost", options:["Yes","No","Depends on cost"]},
     moms: {label:"Moms join for the final nights?", options:["Yes","No","Maybe"]}
   };
 
@@ -516,7 +504,6 @@
     const getMulti = (n)=> Array.from(document.querySelectorAll(`input[name="${n}"]:checked`)).map(i=>i.value);
     return {
       name: name,
-      role: get('role') || 'Unspecified',
       school: document.getElementById('f-school').value.trim(),
       gradDate: document.getElementById('f-graddate').value,
       destination: get('destination'),
@@ -527,9 +514,8 @@
       activities: getMulti('activities'),
       lodging: get('lodging'),
       golf: get('golf'),
-      guide: get('guide'),
+      agent: get('agent'),
       moms: get('moms'),
-      dietary: document.getElementById('f-dietary').value.trim(),
       bucket: document.getElementById('f-bucket').value.trim(),
       notes: document.getElementById('f-notes').value.trim(),
       submittedAt: new Date().toISOString()
@@ -538,20 +524,19 @@
 
   function formatAnswers(a){
     return [
-      `Dads & Grads 2027 survey — ${a.name} (${a.role})`, ``,
-      `High school: ${a.school || '—'}`,
-      `Graduation date: ${a.gradDate || '—'}`,
+      `Dads & Grads 2027 survey — ${a.name}`, ``,
+      `Child's high school: ${a.school || '—'}`,
+      `Child's graduation date: ${a.gradDate || '—'}`,
       `Destination: ${a.destination || '—'}`,
       `Trip length: ${a.length || '—'}`,
       `Weeks that work: ${(a.window||[]).join(', ') || '—'}`,
-      `Budget/person: ${a.budget || '—'}`,
+      `Budget/person/day: ${a.budget || '—'}`,
       `Pace: ${a.pace || '—'}`,
       `Activities: ${(a.activities||[]).join(', ') || '—'}`,
       `Lodging: ${a.lodging || '—'}`,
       `Golf rounds/day: ${a.golf || '—'}`,
-      `Okay with a guide if pricier: ${a.guide || '—'}`,
+      `Okay with a travel agent if pricier: ${a.agent || '—'}`,
       `Moms join final nights: ${a.moms || '—'}`,
-      `Dietary: ${a.dietary || 'none'}`,
       `Bucket list item: ${a.bucket || '—'}`,
       `Notes: ${a.notes || '—'}`
     ].join('\n');
@@ -565,10 +550,6 @@
 
     if(!answers.name){
       msg.textContent = "Enter your name before submitting.";
-      return;
-    }
-    if(!document.querySelector('input[name="role"]:checked')){
-      msg.textContent = "Pick Dad or Senior before submitting.";
       return;
     }
 
@@ -624,14 +605,10 @@
       return;
     }
 
-    sub.textContent = `${responses.length} of 14 have answered so far.`;
-    const dadCount = responses.filter(r=>r.role==='Dad').length;
-    const seniorCount = responses.filter(r=>r.role==='Senior').length;
+    sub.textContent = `${responses.length} of 7 dads have answered so far.`;
 
     let html = `<div class="stat-row">
-      <div class="stat"><div class="num">${responses.length}</div><div class="lbl">total responses</div></div>
-      <div class="stat"><div class="num">${dadCount}</div><div class="lbl">dads answered</div></div>
-      <div class="stat"><div class="num">${seniorCount}</div><div class="lbl">seniors answered</div></div>
+      <div class="stat"><div class="num">${responses.length}</div><div class="lbl">of 7 dads answered</div></div>
     </div>`;
 
     Object.entries(QUESTION_META).forEach(([field, meta])=>{
@@ -657,21 +634,20 @@
         const bits = [];
         if(r.school) bits.push(escapeHtml(r.school));
         if(r.gradDate) bits.push(`grad ${escapeHtml(r.gradDate)}`);
-        html += `<div class="note-card"><div class="who">${escapeHtml(r.name)} · ${escapeHtml(r.role)}</div>${bits.join(' — ')}</div>`;
+        html += `<div class="note-card"><div class="who">${escapeHtml(r.name)}</div>${bits.join(' — ')}</div>`;
       });
       html += `</div></div>`;
     }
 
-    const notesEntries = responses.filter(r=>r.bucket || r.notes || r.dietary);
+    const notesEntries = responses.filter(r=>r.bucket || r.notes);
     if(notesEntries.length){
       html += `<div class="qblock"><h3>In their own words</h3><div class="notes-list">`;
       notesEntries.forEach(r=>{
         let bits = [];
         if(r.bucket) bits.push(`Wants to: ${escapeHtml(r.bucket)}`);
         if(r.notes) bits.push(escapeHtml(r.notes));
-        if(r.dietary) bits.push(`Dietary: ${escapeHtml(r.dietary)}`);
         if(bits.length){
-          html += `<div class="note-card"><div class="who">${escapeHtml(r.name)} · ${escapeHtml(r.role)}</div>${bits.join('<br>')}</div>`;
+          html += `<div class="note-card"><div class="who">${escapeHtml(r.name)}</div>${bits.join('<br>')}</div>`;
         }
       });
       html += `</div></div>`;
